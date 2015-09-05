@@ -1,0 +1,19 @@
+{
+  "name": "meema-server",
+  "version": "1.0.0",
+  "description": "Portable password security made easy - server",
+  "main": "serv.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmzteam/meema-server.git"
+  },
+  "author": "ELMZ",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "colors": "^1.1.2",
+    "express": "^4.13.3",
+    "mongod": "^1.3.0",
+    "nconf": "^0.7.2",
+    "promise": "^7.0.4"
+  }
+}
