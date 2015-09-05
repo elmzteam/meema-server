@@ -11,6 +11,8 @@ var crypto = require("crypto");
 var logger = require("./logger");
 var db = require("./db");
 
+nconf.argv().env();
+
 var PORT = nconf.get("port") || 80;
 
 http.listen(PORT, function(){
@@ -58,6 +60,28 @@ app.post("/account/new", function(req, res){
 		logger.error(err.stack);
 		res.status(500).send("Internal server error.  Try again in a minute.");
 	});
+});
+
+app.post("/account/check", function(req, res){
+	var check = argCheck(req.body, {
+		hardware_id: "string"
+	});
+	
+	if(!check.valid){
+		res.status(400).send(check.error);
+		return;
+	}
+	
+	db.query("accounts", {
+		hardware_id: req.body.hardware_id
+	})
+		.then(function(data){
+		res.status(200).send(data.length == 1);
+	})
+		.catch(function(err){
+		logger.error(err.stack);
+		res.status(500).send("Internal server error.  Try again in a minute.");
+	})
 });
 
 app.put("/:hardware_id/:url", function(req, res){
