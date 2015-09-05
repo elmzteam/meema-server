@@ -22,6 +22,7 @@ http.listen(PORT, function(){
 app.post("/account/new", function(req, res){
 	var check = argCheck(req.body, {
 		hardware_id: "string",
+		username: "string",
 		password: "string"
 	});
 
@@ -36,11 +37,12 @@ app.post("/account/new", function(req, res){
 	}
 
 	db.query("accounts", {
-		hardware_id: req.body.hardware_id
+		hardware_id: req.body.hardware_id,
+		username: req.body.username
 	})
 		.then(function(data){
 		if(data.length > 0){
-			res.status(400).send("An account already exists for this hardware ID.");
+			res.status(400).send("An account already exists for this hardware ID and username.");
 			return;
 		}
 
@@ -49,6 +51,7 @@ app.post("/account/new", function(req, res){
 
 		return db.insert("accounts", {
 			hardware_id: req.body.hardware_id,
+			username: req.body.username,
 			password: hash,
 			salt: salt
 		});
@@ -64,7 +67,8 @@ app.post("/account/new", function(req, res){
 
 app.post("/account/check", function(req, res){
 	var check = argCheck(req.body, {
-		hardware_id: "string"
+		hardware_id: "string",
+		username: "string"
 	});
 	
 	if(!check.valid){
@@ -73,7 +77,8 @@ app.post("/account/check", function(req, res){
 	}
 	
 	db.query("accounts", {
-		hardware_id: req.body.hardware_id
+		hardware_id: req.body.hardware_id,
+		username: req.body.username
 	})
 		.then(function(data){
 		res.status(200).send(data.length == 1);
@@ -84,7 +89,7 @@ app.post("/account/check", function(req, res){
 	})
 });
 
-app.put("/:hardware_id/:url", function(req, res){
+app.put("/:hardware_id/:username/:url", function(req, res){
 	var check = argCheck(req.body, {
 		password: "string",
 		store: "object"
@@ -96,7 +101,8 @@ app.put("/:hardware_id/:url", function(req, res){
 	}
 
 	db.query("accounts", {
-		hardware_id: req.params.hardware_id
+		hardware_id: req.params.hardware_id,
+		username: req.params.username
 	})
 		.then(function(data){
 		if(data.length != 1 || saltHash(req.body.password, data[0].salt) != data[0].password){
@@ -123,7 +129,7 @@ app.put("/:hardware_id/:url", function(req, res){
 	});
 });
 
-app.post("/:hardware_id/:url", function(req, res){
+app.post("/:hardware_id/:username/:url", function(req, res){
 	var check = argCheck(req.body, {
 		password: "string"
 	});
@@ -134,7 +140,8 @@ app.post("/:hardware_id/:url", function(req, res){
 	}
 
 	db.query("accounts", {
-		hardware_id: req.params.hardware_id
+		hardware_id: req.params.hardware_id,
+		username: req.params.username
 	})
 		.then(function(data){
 		if(data.length != 1 || saltHash(req.body.password, data[0].salt) != data[0].password){
