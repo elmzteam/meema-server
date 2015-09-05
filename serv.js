@@ -11,7 +11,7 @@ var crypto = require("crypto");
 var logger = require("./logger");
 var db = require("./db");
 
-var PORT = nconf.get("port") || 1337;
+var PORT = nconf.get("port") || 80;
 
 http.listen(PORT, function(){
 	logger.info("Listening on *:" + PORT);
