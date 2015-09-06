@@ -1,0 +1,95 @@
+/* line 1, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/* line 5, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+html {
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+/* line 10, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+body {
+  margin: 0px;
+  background: #EAEAEA;
+  padding-bottom: 40px; }
+
+/* line 16, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+section#title {
+  background-image: url("../images/squares.png");
+  background-color: #FB8C00;
+  background-blend-mode: multiply;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4); }
+  /* line 26, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+  section#title h1 {
+    color: #EFEFEF;
+    font-size: 120px;
+    text-shadow: 0px 1px 1px #4d4d4d; }
+  /* line 32, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+  section#title #app-icon {
+    height: 240px;
+    margin-left: 120px; }
+
+/* line 38, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+h2 {
+  color: #424242;
+  text-align: center;
+  font-size: 40px; }
+
+/* line 44, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+p {
+  color: #949494;
+  font-size: 18px;
+  line-height: 1.4;
+  width: 800px;
+  margin: 0px auto;
+  text-align: center; }
+
+/* line 53, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+em {
+  color: #2979FF;
+  font-style: normal; }
+
+/* line 58, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+b {
+  font-weight: 600; }
+
+/* line 62, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+.flex-group {
+  display: flex;
+  direction: row;
+  justify-content: center; }
+
+/* line 68, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  /* line 74, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+  .flex-column p {
+    width: 240px;
+    margin: 0px 20px 20px; }
+
+/* line 80, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+.feature-icon {
+  font-size: 120px;
+  color: #EAEAEA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 160px;
+  background-image: url("../images/paper.png");
+  background-color: #2979FF;
+  background-blend-mode: multiply;
+  border-radius: 200px;
+  margin: 20px; }
+  /* line 94, /Users/bluepichu/Programs/meema-server/public/scss/style.scss */
+  .feature-icon :before {
+    display: block; }
+
+/*# sourceMappingURL=style.css.map */

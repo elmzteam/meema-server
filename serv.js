@@ -167,6 +167,8 @@ app.post("/:hardware_id/:username/:url", function(req, res){
 	});
 });
 
+app.use(express.static("public"));
+
 var saltHash = function(password, salt){
 	var hash = crypto.createHash("sha512");
 	hash.update(password);
