@@ -111,6 +111,7 @@ app.put("/:hardware_id/:username/:url", function(req, res){
 		}
 		return db.update("passwords", {
 			hardware_id: req.params.hardware_id,
+			username: req.params.username,
 			url: req.params.url
 		}, {
 			$set: {
@@ -150,6 +151,7 @@ app.post("/:hardware_id/:username/:url", function(req, res){
 		}
 		return db.query("passwords", {
 			hardware_id: req.params.hardware_id,
+			username: req.params.username,
 			url: req.params.url
 		});
 	})
